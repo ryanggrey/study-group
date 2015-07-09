@@ -2,8 +2,8 @@
 
 import Foundation
 
-func isPalindrome(string: String) -> Bool {
-    
+// Strips puncuation, removes whitespace and converts to lowercase
+func normalise(string: String) -> String {
     let allowedChars = NSCharacterSet.alphanumericCharacterSet()
     let ignoredChars = allowedChars.invertedSet
     
@@ -11,9 +11,16 @@ func isPalindrome(string: String) -> Bool {
     let strippedString: String = strippedStringComponents.reduce("", combine: {$0 + $1})
     
     let lowercaseString = strippedString.lowercaseString
-    let reversedString = String(lowercaseString.characters.reverse())
     
-    return lowercaseString == reversedString
+    return lowercaseString
+}
+
+func isPalindrome(string: String) -> Bool {
+    
+    let normalisedString = normalise(string)
+    let reversedString = String(normalisedString.characters.reverse())
+    
+    return normalisedString == reversedString
 }
 
 //: Expect `true`
