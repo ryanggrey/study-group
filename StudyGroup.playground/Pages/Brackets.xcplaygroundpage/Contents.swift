@@ -13,7 +13,7 @@ import Foundation
 
 class Bracket {
     
-    let character: Character
+    private let character: Character
     
     init?(potentialBracket: Character) {
         character = potentialBracket
