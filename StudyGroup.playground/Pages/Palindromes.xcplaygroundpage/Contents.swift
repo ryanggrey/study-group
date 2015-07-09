@@ -51,3 +51,5 @@ isPalindrome("  !  ?  ")
 isPalindrome("Not a palindome!")
 isPalindrome("Ryan")
 isPalindrome("123")
+
+//: [Brackets](@next)
