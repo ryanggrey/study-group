@@ -3,5 +3,6 @@
     <pages>
         <page name='Palindromes'/>
         <page name='Brackets'/>
+        <page name='FizzBuzz'/>
     </pages>
 </playground>
