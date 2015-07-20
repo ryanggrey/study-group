@@ -6,7 +6,8 @@ import Foundation
 
 func fizzBuzz(numbers: [Int]) -> [String] {
     
-    func innerFizzBuzz(fizz fizzTest: (Int) -> Bool, buzz buzzTest: (Int) -> Bool, i: Int) -> String {
+    typealias fizzTestType = (Int) -> Bool
+    func innerFizzBuzz(fizz fizzTest: fizzTestType, buzz buzzTest: fizzTestType, i: Int) -> String {
         let fizzBuzzTest = { fizzTest($0) || buzzTest($0) }
         
         var replacementString = ""
@@ -27,12 +28,7 @@ func fizzBuzz(numbers: [Int]) -> [String] {
     let fizzTest = { $0 % 3 == 0 }
     let buzzTest = { $0 % 5 == 0 }
     
-    var strings: [String] = []
-    
-    for i in numbers {
-        let replacementString = innerFizzBuzz(fizz: fizzTest, buzz: buzzTest, i: i)
-        strings.append(replacementString)
-    }
+    let strings = numbers.map { innerFizzBuzz(fizz: fizzTest, buzz: buzzTest, i: $0) }
     
     return strings
 }
@@ -42,5 +38,4 @@ if let path = NSBundle.mainBundle().pathForResource("fizzbuzz-expected", ofType:
     let expectedFizzBuzzArray = split(expectedFizzBuzzOutputString.characters) { $0 == "\n" }.map{ String($0) }
     
     let isFizzBuzzCorrect = fizzBuzz(Array(1...100)) == expectedFizzBuzzArray
-
 }
