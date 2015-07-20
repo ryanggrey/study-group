@@ -6,14 +6,22 @@ import Foundation
 
 func fizzBuzz(numbers: [Int]) -> [String] {
     
+    func fizzTest(number: Int) -> Bool {
+        return number % 3 == 0
+    }
+    
+    func buzzTest(number: Int) -> Bool {
+        return number % 5 == 0
+    }
+    
     var strings: [String] = []
     for i in numbers {
         var replacementString = ""
-        if i % 3 == 0 || i % 5 == 0 {
-            if i % 3 == 0 {
+        if fizzTest(i) || buzzTest(i) {
+            if fizzTest(i) {
                 replacementString += "Fizz"
             }
-            if i % 5 == 0 {
+            if buzzTest(i) {
                 replacementString += "Buzz"
             }
         } else {
