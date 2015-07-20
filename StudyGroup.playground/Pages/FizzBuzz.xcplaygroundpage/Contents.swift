@@ -6,13 +6,8 @@ import Foundation
 
 func fizzBuzz(numbers: [Int]) -> [String] {
     
-    func fizzTest(number: Int) -> Bool {
-        return number % 3 == 0
-    }
-    
-    func buzzTest(number: Int) -> Bool {
-        return number % 5 == 0
-    }
+    let fizzTest = { $0 % 3 == 0 }
+    let buzzTest = { $0 % 5 == 0 }
     
     var strings: [String] = []
     for i in numbers {
