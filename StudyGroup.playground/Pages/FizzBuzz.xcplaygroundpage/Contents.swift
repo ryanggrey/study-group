@@ -8,15 +8,19 @@ func fizzBuzz(numbers: [Int]) -> [String] {
     
     var strings: [String] = []
     for i in numbers {
-        if i % 3 == 0 && i % 5 == 0 {
-            strings.append("FizzBuzz")
-        } else if i % 3 == 0 {
-            strings.append("Fizz")
-        } else if i % 5 == 0 {
-            strings.append("Buzz")
+        var replacementString = ""
+        if i % 3 == 0 || i % 5 == 0 {
+            if i % 3 == 0 {
+                replacementString += "Fizz"
+            }
+            if i % 5 == 0 {
+                replacementString += "Buzz"
+            }
         } else {
-            strings.append(String(i))
+            replacementString = String(i)
         }
+        
+        strings.append(replacementString)
     }
     
     return strings
