@@ -6,13 +6,11 @@ import Foundation
 
 func fizzBuzz(numbers: [Int]) -> [String] {
     
-    let fizzTest = { $0 % 3 == 0 }
-    let buzzTest = { $0 % 5 == 0 }
-    
-    var strings: [String] = []
-    for i in numbers {
+    func innerFizzBuzz(fizz fizzTest: (Int) -> Bool, buzz buzzTest: (Int) -> Bool, i: Int) -> String {
+        let fizzBuzzTest = { fizzTest($0) || buzzTest($0) }
+        
         var replacementString = ""
-        if fizzTest(i) || buzzTest(i) {
+        if fizzBuzzTest(i) {
             if fizzTest(i) {
                 replacementString += "Fizz"
             }
@@ -23,6 +21,16 @@ func fizzBuzz(numbers: [Int]) -> [String] {
             replacementString = String(i)
         }
         
+        return replacementString
+    }
+    
+    let fizzTest = { $0 % 3 == 0 }
+    let buzzTest = { $0 % 5 == 0 }
+    
+    var strings: [String] = []
+    
+    for i in numbers {
+        let replacementString = innerFizzBuzz(fizz: fizzTest, buzz: buzzTest, i: i)
         strings.append(replacementString)
     }
     
